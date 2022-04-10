@@ -1,0 +1,51 @@
+@import './variables';
+
+@mixin mixinFex ( $justify-content, $align-items ){
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+@mixin mixinBtn ($padding) {
+	background-color: $secondaryColor;
+	border-radius: 5%;
+	border: 1px solid $decorationColor;
+	color: #ffffff;
+	padding: $padding;
+	text-shadow: 0px 1px 0px $decorationColor;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $decorationColor;
+	}
+	&:active {
+	 background-color: $decorationColor;
+	 position:relative;
+	 top:1px;
+	}
+	
+}
+
+@mixin mixinTyping ( $nCharac, $steps, $time ){
+	width: $nCharac;
+	animation: typing $time steps($steps), blink .5s step-end infinite alternate;
+	white-space: nowrap;
+	overflow: hidden;
+	border-right: 3px solid;
+
+}
+
+/* -- Animação de digitação -- */
+/* -- Font: https://codepen.io/denic/pen/GRoOxbM -- */
+
+@keyframes typing {
+	from {
+		width: 0;
+	}
+}
+
+@keyframes blink {
+	50% {
+		border-color: transparent;
+	}
+}

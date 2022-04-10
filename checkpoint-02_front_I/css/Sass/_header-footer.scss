@@ -1,0 +1,172 @@
+header {
+  z-index: 1;
+  position: fixed;
+  height: 5rem;
+  width: 100%;
+  background-color: $primaryColor;
+  padding: 0 1.25rem;
+  @include mixinFex( space-between, center );
+  
+  a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    color: $textcolorLight;
+  
+  }
+
+  .logo a {
+    font-weight: 700;
+    font-size: 1.5625rem;
+    span{
+      font-weight: 500;
+      color: $decorationColor;
+    }
+  }
+  
+  .side-menu{
+    display: none;
+  }
+  .menu {
+      list-style-type: none;
+      @include mixinFex( space-between, center );
+      gap: 20px;
+      padding: 10px;
+
+      a:hover{
+        color: $secondaryColorLight;
+      }
+
+      li:last-child {
+        @include mixinBtn (0.8rem 1.5rem);
+        a:hover{
+          color: $textcolorLight;
+        }
+      }
+  }
+}
+
+footer{
+  height: 15rem;
+  width: 100%;
+  background-color: $primaryColor;
+  color: $textcolorLight;
+  @include mixinFex ( center, center );
+  flex-direction: column;
+  gap: 3rem;
+
+  .alunos{
+      width: 80%;
+      @include mixinFex ( space-between, center );
+      .aluno{
+          @include mixinFex ( center, center );
+          flex-direction: column;
+          .linkedin{
+            background-image: url('../../img/linkedinLogo.png');
+
+          }
+          .github{
+            background-image: url('../../img/githubLogo.png');
+
+          }
+      }
+  }
+}
+
+@media (max-width: 800px) {
+  /* Tablet */
+  header{
+
+    nav{
+      top: 5rem;
+      width: 95%;
+      height: 100%;
+      position: fixed;
+      background-color: $primaryColor;
+      overflow: hidden;
+
+      max-height: 0;
+      transition: max-height .2s ease-out;
+
+      .menu{
+        flex-direction: column;
+      }
+
+      .menu a{
+        display: block;
+        padding: 30px;
+        color: white;
+
+        &:hover{
+          background-color: gray;
+  
+        }
+      }
+    }
+    
+    /* Menu Icon */
+    .hamb{
+      cursor: pointer;
+      float: right;
+      padding: 40px 20px;
+      &-line {
+        background: white;
+        display: block;
+        height: 2px;
+        position: relative;
+        width: 24px;
+        
+        &::before,
+        &::after{
+          background: white;
+          content: '';
+          display: block;
+          height: 100%;
+          position: absolute;
+          transition: all .2s ease-out;
+          width: 100%;
+        }
+        &::before{
+          top: 5px;
+        }
+        &::after{
+          top: -5px;
+
+        }
+      }
+    }
+
+    .side-menu:checked ~ nav{
+      max-height: 50%;
+    }
+    .side-menu:checked ~ .hamb .hamb-line {
+      background: transparent;
+    }
+    .side-menu:checked ~ .hamb .hamb-line::before {
+      transform: rotate(-45deg);
+      top:0;
+    }
+    .side-menu:checked ~ .hamb .hamb-line::after {
+      transform: rotate(45deg);
+      top:0;
+    }
+    
+  }
+  
+  footer{
+    h2{
+      font-size: 1rem;
+    }
+  }
+  
+}
+
+@media (max-width: 500px) {
+  /* Mobile */
+  
+  .alunos{
+      flex-direction: column;
+      gap: 20px;
+  }
+
+}
